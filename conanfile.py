@@ -2,7 +2,7 @@ import os
 from conans import ConanFile, CMake, tools
 
 
-class CgalConan(ConanFile):
+class OpenpnpCaptureConan(ConanFile):
     name = "openpnp-capture"
     version = "0.0.17"
     license = "MIT"
