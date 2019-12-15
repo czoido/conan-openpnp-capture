@@ -13,7 +13,7 @@ class OpenpnpCaptureConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     requires = "libjpeg-turbo/2.0.2@bincrafters/stable"
     generators = "cmake"
-    _source_subfolder = "openpnp-capture-0.0.17"
+    _source_subfolder = "openpnp-capture-{}".format(version)
 
     def patch_sources(self):
         tools.replace_in_file(
@@ -42,7 +42,7 @@ message("JPEG library found: ${JPEG_FOUND}")''')
 
     def source(self):
         tools.get(
-            "https://github.com/openpnp/openpnp-capture/archive/v0.0.17.zip")
+            "https://github.com/openpnp/openpnp-capture/archive/v{}.zip".format(self.version))
         self.patch_sources()
 
     def build(self):
