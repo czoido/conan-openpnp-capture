@@ -1,2 +1,3 @@
-# conan-cgal
-Conan recipe for cgal 5.0 library
+# conan-openpnp-capture
+
+Conan recipe for [openpnp-capture library](https://github.com/openpnp/openpnp-capture)
