@@ -11,7 +11,7 @@ class OpenpnpCaptureConan(ConanFile):
     description = "A cross platform video capture library with a focus on machine vision."
     topics = ("vision", "capture")
     settings = "os", "compiler", "build_type", "arch"
-    requires = "libjpeg/9c"
+    requires = "libjpeg-turbo/2.0.2"
     generators = "cmake"
     _source_subfolder = "openpnp-capture-{}".format(version)
 
@@ -29,7 +29,7 @@ message("JPEG library found: ${JPEG_FOUND}")''')
         tools.replace_in_file(
             os.path.join(self._source_subfolder, "CMakeLists.txt"),
             "target_link_libraries(openpnp-capture turbojpeg-static)",
-            "target_link_libraries(openpnp-capture CONAN_PKG::libjpeg)")
+            "target_link_libraries(openpnp-capture CONAN_PKG::libjpeg-turbo)")
         tools.replace_in_file(
             os.path.join(self._source_subfolder, "CMakeLists.txt"),
             "add_subdirectory(linux/tests)", "")
