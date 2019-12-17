@@ -11,7 +11,7 @@ class OpenpnpCaptureConan(ConanFile):
     description = "A cross platform video capture library with a focus on machine vision."
     topics = ("vision", "capture")
     settings = "os", "compiler", "build_type", "arch"
-    requires = "libjpeg-turbo/1.5.2@bincrafters/stable"
+    requires = "libjpeg-turbo/2.0.2"
     generators = "cmake"
     _source_subfolder = "openpnp-capture-{}".format(version)
 
