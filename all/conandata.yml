@@ -2,3 +2,6 @@ sources:
   "0.0.22":
     url: "https://github.com/openpnp/openpnp-capture/archive/refs/tags/v0.0.22.tar.gz"
     sha256: "e53106206157768bd3413d277dfba65468021f6c6ef8b16c14a3c304d4d1384b"
+  "0.0.23":
+    url: "https://github.com/openpnp/openpnp-capture/archive/refs/tags/v0.0.23.tar.gz"
+    sha256: "6458705d9f3345c1b41951a209f5aa01880b0ba9c847d2db4fb0d1330ddebd7c"
