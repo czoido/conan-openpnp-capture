@@ -2,3 +2,4 @@ test_package/build
 .vscode
 all/test_package/build/
 .DS_Store
+all/test_package/CMakeUserPresets.json

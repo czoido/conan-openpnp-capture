@@ -1,0 +1,50 @@
+--- CMakeLists.txt	2023-01-22 12:11:04.603455522 +0100
++++ CMakeLists.txt	2023-01-22 12:16:38.031290959 +0100
+@@ -110,9 +110,6 @@
+     add_subdirectory(mac/tests)
+ 
+ ELSEIF(UNIX)
+-    # install path resolving
+-    include(GNUInstallDirs)
+-
+     # set the platform identification string
+     add_definitions(-D__PLATFORM__="Linux ${COMPILERBITS}")
+ 
+@@ -121,35 +118,14 @@
+                                            linux/mjpeghelper.cpp
+                                            linux/yuvconverters.cpp)
+ 
+-    # force include directories for libjpeg-turbo
+-    include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/linux/contrib/libjpeg-turbo-dev")
+-
+     # add pthreads library 
+     set(THREADS_PREFER_PTHREAD_FLAG ON)
+     find_package(Threads REQUIRED)    
+     target_link_libraries(openpnp-capture PUBLIC Threads::Threads)
+ 
+     # add turbojpeg library
+-    find_package(PkgConfig REQUIRED)
+-    pkg_search_module(TurboJPEG libturbojpeg)
+-    if( TurboJPEG_FOUND )
+-        link_directories(${TurboJPEG_LIBDIR})
+-        target_include_directories(openpnp-capture PUBLIC ${TurboJPEG_INCLUDE_DIRS})
+-        target_link_libraries(openpnp-capture PUBLIC ${TurboJPEG_LIBRARIES})
+-    else()
+-        # compile libjpeg-turbo for MJPEG decoding support
+-        # right now, we need to disable SIMD because it
+-        # causes a compile problem.. we need to fix this
+-        # later...
+-        set(ENABLE_SHARED OFF)
+-        set(WITH_SIMD OFF)    
+-        set(TurboJPEG_LIBRARIES turbojpeg-static)  
+-        add_subdirectory(linux/contrib/libjpeg-turbo-dev)
+-        target_link_libraries(openpnp-capture PRIVATE ${TurboJPEG_LIBRARIES})
+-    endif()
+-
+-    # add linux-specific test application
+-    add_subdirectory(linux/tests)
++    find_package(libjpeg-turbo REQUIRED CONFIG)
++    target_link_libraries(openpnp-capture PRIVATE libjpeg-turbo::libjpeg-turbo)
+ 
+     # install lib and headers
+     install(FILES include/openpnp-capture.h

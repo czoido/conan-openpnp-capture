@@ -5,3 +5,8 @@ sources:
   "0.0.23":
     url: "https://github.com/openpnp/openpnp-capture/archive/refs/tags/v0.0.23.tar.gz"
     sha256: "6458705d9f3345c1b41951a209f5aa01880b0ba9c847d2db4fb0d1330ddebd7c"
+patches:
+  "0.0.22":
+    - patch_file: "patches/0.0.22-cmake.patch"
+  "0.0.23":
+    - patch_file: "patches/0.0.23-cmake.patch"
