@@ -39,4 +39,4 @@ jobs:
           conan config home
       - name: Build the package and run test_package
         run: |
-          conan create . -pr:b=default -pr:h=default --build=missing
+          conan create all openpnp-capture/0.0.23@ -pr:b=default -pr:h=default --build=missing
